@@ -1,0 +1,616 @@
+<%-- 
+    Document   : index
+    Created on : 27 Mar, 2023, 2:48:32 PM
+    Author     : SRIGANESH
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <title>JSP Page</title>
+        <style>
+            body, html{
+                margin:0;
+                padding: 0;
+                height: 100%;
+                background:url('images/bg3.jpg') repeat-y;
+                background-size: cover;
+                font-family: 'Trebuchet MS', sans-serif;
+            }
+            .header{
+                margin: 0;
+                padding: 5px;
+                width:100%;
+                height: 15%;
+                background: #fff;
+                overflow: hidden;
+                position: relative;
+            }
+            .banner{
+                width:20%;
+            }
+            .banner img {
+                float: left;
+                //background: #555;
+            }
+            .banner h3 {
+                position: absolute;
+                top: 5px;
+                left: 80px;
+                font-size: 24px;
+                color:#AF3602;
+            }
+            .btn1{
+                 width:150px;
+                 height: auto;
+                 padding:10px 10px;
+                 border-radius:50px;
+                 background: #001926;
+                 color:#fff;
+                 outline: none;
+                 border: none;
+                 box-shadow: 2px 2px 2px #F7A155;
+                 
+            }
+            a{
+                text-decoration: none;
+            }
+            .btn1:hover{
+                
+                background: #F98F31;
+                color:#000;
+                box-shadow: 2px 2px 2px #000;
+                font-weight: bold;
+            }
+           .tablink {
+                    background-color: #555;
+                    color: white;
+                    float: left;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    padding: 14px 16px;
+                    font-size: 17px;
+                    width: 15%;
+                    border-radius:  0 0 50px 50px;
+            }
+            .tablink1{
+                    background-color: transparent;
+                    color: white;
+                    float: left;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    padding: 5px 5px;
+                    font-size: 17px;
+                    width: 15%;
+                    border: 1px #ffff33 solid;
+                    border-radius:  50px;
+            }
+            .tablink1:hover {
+                    background-color: #567E87;
+            }
+            .tablink:hover {
+                    background-color: #567E87;
+            }
+
+            /* Style the tab content (and add height:100% for full page content) */
+            .tabcontent {
+                    color: white;
+                    display: none;
+                    padding: 20px 20px;
+                    height: 100%;
+                    overflow-y: scroll;
+             }
+            #All {background-color: rgba(0,0,0, 0.7);}
+            #Home {background-color: rgba(0,0,0, 0.7);}
+            #News {background-color: rgba(0,0,0, 0.7);}
+            #Contact {background-color: rgba(0,0,0, 0.7);}
+            #About {background-color: rgba(0,0,0, 0.7);}
+            .news
+            {
+                margin-top: 200;
+                position: absolute;
+                //margin-left: 19%;
+                width:75%;
+                height:auto;
+                background: #000;
+            }
+            .sideview
+            {
+                margin-top: 200;
+                position: absolute;
+                padding: 10px;
+                width:19%;
+                height: auto;
+                //background: #02647C;
+            }
+            .btns
+            {
+                
+                background: #FAC675;
+                padding:5px;
+            }
+           .main
+           {
+               margin: 0;
+               width: 600px;
+               height: auto;
+               background: rgba(255,255,255, 0.7);
+               
+           }
+           table{
+               width:400px;
+               height: 200px;
+               border:1px solid #B10000;
+               border-radius: 50px;
+               position:relative;
+               float:left;
+               padding:10px;
+               
+           }
+           img1 {
+                border: 1px solid #fff; /* Gray border */
+                border-radius: 4px;  /* Rounded border */
+                padding: 5px; /* Some padding */
+                width: 150px; /* Set a small width */
+           }
+
+            /* Add a hover effect (blue shadow) */
+            img1:hover {
+               box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+            }
+            .cards-wrapper {
+                display: flex;
+                justify-content: center;
+            }
+            .card img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            .card {
+                margin: 0 0.5em;
+                box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+                border: none;
+                border-radius: 0;
+            }
+            .carousel-inner {
+                padding: 1em;
+            }
+            .carousel-control-prev,
+            .carousel-control-next {
+                background-color: #e1e1e1;
+                width: 5vh;
+                height: 5vh;
+                border-radius: 50%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .card-text, .card-title{
+                color:#000;
+            }
+            @media (min-width: 768px) {
+                .card img {
+                    height: 11em;
+                }
+            }
+
+        </style>
+       </head>
+    <body>
+        <div class="header" id="myHeader" >
+            <div class='banner'>
+                <img src='images/logo.png' width="80" height="80" alt='logo'/>
+                <h3 style="position: absolute; top: 25px;left: 80px;font-size: 24px;color:#AF3602; font-family: 'Trebuchet MS'; font-weight: bolder;">News Portal</h3>
+                
+            </div>
+            <div style="postion:absolute; float:right; margin-top: 25px; margin-right: 50px;">
+                <a href="index.jsp" class="btn1" style="text-decoration: none;"> Home </a>&nbsp;&nbsp;&nbsp;
+                <a href="login.jsp" class="btn1" style="text-decoration: none;"> SignUp / SignIn </a>&nbsp;&nbsp;&nbsp;
+                <a href="#" class="btn1" style="text-decoration: none;"> About Us </a>
+            </div>
+            
+            
+        </div>
+        
+         <div class="main" style="">
+            <div class="news">
+                <button class="tablink" onclick="openPage('Home', this, '#466AFC')" style="border-radius:  0 0 50px 0;" id="defaultOpen">ALL</button>
+           <button class="tablink" onclick="openPage('Home', this, '#466AFC')" style="border-radius:  0 0 50px 0;" >CSE</button>
+            <button class="tablink" onclick="openPage('News', this, '#9F0000')">ECE</button>
+            <button class="tablink" onclick="openPage('Contact', this, ' #E90D38')">MECH</button>
+            <button class="tablink" onclick="openPage('About', this, ' #979797')">EEE</button>
+            <button class="tablink" onclick="openPage('About', this, ' #F1ED03')" >PG</button>
+            <button class="tablink" onclick="openPage('About', this, ' #F1ED03')" style="border-radius:  0 0 0 50px;">CIVIL</button>
+            
+             <!--<button class="tablink1" onclick="openPage('Education', this, '#466AFC')" style="" id="defaultOpen">Eductionid="defaultOpen"</button>
+            <button class="tablink1" onclick="openPage('Entertainment', this, '#9F0000')">Entertainment</button>-->
+            
+             <div id="Home" class="tabcontent" style="" align="center" >
+               <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Education</h3>
+                </div>
+                    <%
+                        Connection con1=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Education' and status='Accepted' AND department='CSE'";
+                            Statement st1 = con1.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                
+                 <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Entertainment</h3>
+                </div>
+                     <%
+                        Connection con2=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Sports' and status='Accepted' AND department='CSE'";
+                            Statement st1 = con2.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                         
+            </div>
+            <div id="News" class="tabcontent" style="" align="center">
+                <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Education</h3>
+                </div>
+                    <%
+                        Connection con3=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con3 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Education' and status='Accepted' AND department='ECE'";
+                            Statement st1 = con3.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                
+                 <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Entertainment</h3>
+                </div>
+                     <%
+                        Connection con4=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con4 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Sports' and status='Accepted' AND department='ECE'";
+                            Statement st1 = con4.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                        
+                         
+            </div>
+             
+           
+            <div id="Contact" class="tabcontent" style="" align="center">
+                <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Education</h3>
+                </div>
+                    <%
+                        Connection con5=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con5 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Education' and status='Accepted' AND department='MECH'";
+                            Statement st1 = con5.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                
+                 <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Entertainment</h3>
+                </div>
+                     <%
+                        Connection con6=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con6 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Sports' and status='Accepted' AND department='MECH'";
+                            Statement st1 = con6.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                        
+                         
+            </div>
+            <div id="About" class="tabcontent" style="" align="center">
+                <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Education</h3>
+                </div>
+                    <%
+                        Connection con7=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con7 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Education' and status='Accepted' AND department='MECH'";
+                            Statement st1 = con7.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                
+                 <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Entertainment</h3>
+                </div>
+                     <%
+                        Connection con8=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con8 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Sports' and status='Accepted' AND department='MECH'";
+                            Statement st1 = con8.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                         
+            </div>
+            <div id="About" class="tabcontent" style="" align="center" >
+                <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Education</h3>
+                </div>
+                    <%
+                        Connection con9=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con9 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Education' and status='Accepted' AND department='MECH'";
+                            Statement st1 = con9.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                
+                 <div style="border:3px #36E1F9 double; margin: 5px 0;border-left: none;border-right: none;border-top:none; width: 100%;">
+                    <h3 style="color:#36E1F9;">Entertainment</h3>
+                </div>
+                     <%
+                        Connection con10=null;
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            con10 = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                            String str1 = "select articlename, description, template from articles where category='Sports' and status='Accepted' AND department='MECH'";
+                            Statement st1 = con10.createStatement();
+                            ResultSet rs1 = st1.executeQuery(str1);
+                            while(rs1.next())
+                            {
+                                %>
+                                <div align="center" style="width:200px;margin: 20px;position:relative;box-shadow: 5px 5px 10px #888888; display: inline-block;">
+                                    <img src="mainImage.jsp?aname=<%=rs1.getString(1)%>" width="200" height="100" alt="image">
+                                    <h5><%=rs1.getString(1)%></h5>
+                                    <p style="font-size:10px;"><%=rs1.getString(2)%></p>
+                                    <a href=""><button>Read More</button></a>
+                                </div>
+                                <%
+                            }
+                        }catch(Exception e)
+                        {
+                        }
+                    %>
+                         
+            </div>
+           
+            <!-- Swiper JS -->
+            <script src="js/swiper-bundle.min.js"></script>
+
+            <!-- JavaScript -->
+            <script src="js/script.js"></script>
+            
+            <script language="javaScript">
+                    // Get the element with id="defaultOpen" and click on it
+                    document.getElementById("defaultOpen").click();
+                function openPage(pageName, elmnt, color) {
+                    // Hide all elements with class="tabcontent" by default */
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("tabcontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+
+                    // Remove the background color of all tablinks/buttons
+                    tablinks = document.getElementsByClassName("tablink");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].style.backgroundColor = "";
+                    }
+                    tablinks1 = document.getElementsByClassName("tablink1");
+                    for (i = 0; i < tablinks1.length; i++) {
+                        tablinks[i].style.backgroundColor = "";
+                    }
+
+                    // Show the specific tab content
+                    document.getElementById(pageName).style.display = "block";
+
+                    // Add the specific color to the button used to open the tab content
+                    elmnt.style.backgroundColor = color;
+                }
+               //Function demonstrating the Href Method
+            
+        </script>
+       </div>
+         
+        </div>
+                    
+        <div style="width:25%; height: 700px; margin: 0; position: absolute;right:0; background: transparent;">
+            <div style="width:100%; background:#555; margin: 0;padding:0; " align="center">
+                <button style="width:100%;background-color: #555;color: white;float: left;border: none;outline: none;padding: 14px 16px;font-size: 17px;">IMPORTANT LINKS</button>
+                <!--<h3 style="background-color: #555;color: white;font-size: 17px;">IMPORTANT LINKS</h3>-->
+            </div>
+            <div style="padding:5px 20px;margin: 0; height: 50%; background: rgba(0,0,0, 0.7);color:#fff;text-align: justify; overflow-y: scroll; ">
+               <marquee behavior="scroll" direction="down" height="90%" scrollamount="3">
+                   <div style="height:100%;color:#ffffff; text-align: justify; padding:10px;">
+                <%
+                    Connection con = null;
+                    try{
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/newsportal","root","root");
+                        String str = "SELECT title,link FROM urldata WHERE DATE(NOW()) >= DATE(ldate)";
+                        Statement st = con.createStatement();
+                        ResultSet rs = st.executeQuery(str);
+                        while(rs.next())
+                        {
+                            %>
+                            
+                                <p style="color: #ff3333"><%=rs.getString(1)%></p>
+                                <p style="color: #0000ff"><a href="<%=rs.getString(2)%>" target="_new"><%=rs.getString(2)%></a><sup>New</sup></p>
+                                
+                            
+                            <%
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                %>
+                </div>
+                </marquee>
+            </div>
+            
+        </div>
+        <div style="width:25%; height: auto; margin-top:401px; position: absolute;right:0; background: transparent;">
+            <div style="width:100%; background:#555; margin: 0;padding:0; " align="center" >
+                <button style="width:100%;background-color: #555;color: white;float: left;border: none;outline: none;padding: 14px 16px;font-size: 17px;">GALLERY</button>
+                <!--<h3 style="background-color: #555;color: white;font-size: 17px;">IMPORTANT LINKS</h3>-->
+            </div>
+            <div style="padding:5px 20px;margin: 0; height: 50%; background: rgba(0,0,0, 0.7);color:#fff;text-align: justify; overflow-y: scroll; ">
+                <p>6 I'm attempting to create two separate divs, one covering the left half of the screen and 
+                one covering the right. Why does my code create only one div covering the left half of the page</p>
+            </div>
+            
+        </div>
+    </body>
+</html>
