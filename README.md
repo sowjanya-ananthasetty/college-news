@@ -129,6 +129,7 @@ Import the provided SQL file into MySQL.
 ## 📷 Screenshots
 
 * Home Page
+ <img width="1350" height="666" alt="image" src="https://github.com/user-attachments/assets/2e04a3f4-3263-4ff0-9c35-0539a0b80840" />
 * Registration Page
 * Login Page
 * Admin Dashboard
