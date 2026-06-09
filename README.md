@@ -166,15 +166,12 @@ Import the provided SQL file into MySQL.
 
 * Articles Status Page of Admin:
   
-<img width="716" height="105" alt="image" src="https://github.com/user-attachments/assets/c553331a-0c04-4516-aa51-22acb8000403" />
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/61f132ff-c0c6-4aa2-b00c-dbc49c4e4556" />
 
-* Articles adding Interface:
-  
-  <img width="1300" height="764" alt="image" src="https://github.com/user-attachments/assets/623cb5ed-d84a-4c77-9b74-eaa97496b206" />
 
 * Article Status Page of Student
   
-  <img width="1260" height="744" alt="image" src="https://github.com/user-attachments/assets/5e096e7a-d308-454f-bf02-e9cf5881c416" />
+  <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/663df0b7-13e0-4560-b179-91f6f7fb55f8" />
 
 * URL'S Interface
   
